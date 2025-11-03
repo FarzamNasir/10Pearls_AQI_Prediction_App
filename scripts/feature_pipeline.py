@@ -102,6 +102,8 @@ def compute_features(raw_data, is_realtime=False):
         # A more robust solution would involve a Feature Store lookup here.
         df['aqi_lag_1h'] = np.nan
         df['aqi_change_rate'] = np.nan
+        df['pm2_5_roll_24h'] = np.nan
+        df['pm10_roll_24h'] = np.nan
         df['target_aqi_24h'] = np.nan
         df['target_aqi_48h'] = np.nan
         df['target_aqi_72h'] = np.nan # Targets are always NaN for real-time inference
