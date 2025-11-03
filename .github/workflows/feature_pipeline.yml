@@ -1,0 +1,33 @@
+name: Hourly Feature Pipeline
+
+on:
+  schedule:
+    # Runs every hour
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run_feature_pipeline:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Real-Time Feature Pipeline
+        env:
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+          LATITUDE: 24.86
+          LONGITUDE: 67.00
+          FEATURE_GROUP_NAME: karachi_aqi_features
+          FEATURE_GROUP_VERSION: 1
+        run: python scripts/feature_pipeline.py realtime

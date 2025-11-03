@@ -1,0 +1,9 @@
+hopsworks==4.4.2
+requests
+pandas
+scikit-learn
+fastapi
+uvicorn
+gradio
+python-multipart
+python-dotenv # For loading environment variables
