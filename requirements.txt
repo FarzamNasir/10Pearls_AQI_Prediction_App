@@ -1,4 +1,4 @@
-hopsworks==4.4.2
+hopsworks
 requests
 pandas
 scikit-learn
